@@ -1,6 +1,15 @@
 version: "3.4"
 
 services:
+  redis:
+    env_file:
+      - ".env"
+    image: "redis:5.0.5-buster"
+    restart: "${DOCKER_RESTART_POLICY:-unless-stopped}"
+    stop_grace_period: "${DOCKER_STOP_GRACE_PERIOD:-3s}"
+    volumes:
+      - "redis:/data"
+
   postgres:
     env_file:
       - ".env"
@@ -18,7 +27,8 @@ services:
       args:
         - "FLASK_ENV=${FLASK_ENV:-production}"
     depends_on:
-      - "postgres"
+      - "postgres" 
+      - "redis"
     env_file:
       - ".env"
     healthcheck:
@@ -66,3 +76,4 @@ services:
 
 volumes:
   postgres: {}
+  redis: {}

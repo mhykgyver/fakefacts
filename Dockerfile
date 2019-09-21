@@ -24,6 +24,6 @@ COPY . .
 
 RUN pip install --editable .
 
-EXPOSE 8000
+EXPOSE 8000:8000
 
 CMD ["gunicorn", "-c", "python:config.gunicorn", "fakefacts.app:create_app()"]

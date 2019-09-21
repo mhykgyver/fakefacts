@@ -12,7 +12,7 @@ class Fact(ResourceMixin, db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id',
                                                   onupdate='CASCADE',
                                                   ondelete='CASCADE'),
-                        index=True, nullable=False)
+                                                  index=True, nullable=False)
     user = db.relationship('User')
 
     message = db.Column(db.String(200))

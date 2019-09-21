@@ -4,6 +4,7 @@ import os
 from datetime import timedelta
 from distutils.util import strtobool
 
+APP_NAME = 'Fake Facts'
 
 LOG_LEVEL = os.getenv('LOG_LEVEL', 'DEBUG')
 
